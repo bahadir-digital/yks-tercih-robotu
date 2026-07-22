@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YKS Tercih Robotu — İndir</title>
+<meta name="description" content="Claude ile YKS Tercih Robotu — ücretsiz skill dosyasını indirin.">
+<style>
+  :root { --bg:#FBFAF7; --ink:#1a1a1a; --accent:#D4583A; --muted:#8B8B85; --card:#FFFFFF; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Roboto Mono', ui-monospace, monospace; background:var(--bg); color:var(--ink);
+         min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:32px 20px; }
+  .badge { font-size:12px; letter-spacing:2px; color:var(--accent); border:1px solid var(--accent);
+           padding:4px 12px; border-radius:999px; margin-bottom:20px; }
+  h1 { font-size:26px; line-height:1.3; text-align:center; margin-bottom:8px; max-width:340px; }
+  .sub { font-size:13px; color:var(--muted); text-align:center; margin-bottom:28px; max-width:320px; }
+  .btn { display:block; width:100%; max-width:340px; text-align:center; text-decoration:none;
+         padding:16px; border-radius:12px; font-size:15px; font-weight:700; margin-bottom:12px; }
+  .btn-primary { background:var(--accent); color:#fff; }
+  .btn-ghost { background:transparent; color:var(--ink); border:1.5px solid var(--ink); font-weight:400; font-size:13px; }
+  #igWarn { display:none; background:#FFF3EC; border:1.5px solid var(--accent); border-radius:12px;
+            padding:16px; max-width:340px; margin-bottom:16px; font-size:13px; line-height:1.6; }
+  #igWarn b { color:var(--accent); }
+  .steps { background:var(--card); border-radius:12px; padding:20px; max-width:340px; width:100%;
+           margin-top:12px; font-size:13px; line-height:1.7; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+  .steps h2 { font-size:13px; letter-spacing:1px; margin-bottom:10px; color:var(--accent); }
+  .steps ol { padding-left:18px; }
+  .foot { margin-top:auto; padding-top:32px; font-size:12px; color:var(--muted); text-align:center; }
+  .foot a { color:var(--muted); }
+  #copied { display:none; color:var(--accent); font-size:12px; text-align:center; margin-bottom:12px; }
+</style>
+</head>
+<body>
+  <div class="badge">ÜCRETSİZ</div>
+  <h1>Claude ile YKS Tercih Robotu</h1>
+  <p class="sub">Sonuç belgeni yükle, 24 tercihlik listen ve Excel raporun hazır.</p>
+
+  <div id="igWarn">
+    <b>Instagram içinden açtın.</b> Instagram'ın tarayıcısı dosya indiremiyor.
+    Sağ üstteki <b>⋯</b> menüsünden <b>"Tarayıcıda aç"</b> seçeneğine dokun,
+    bu sayfa Safari/Chrome'da açılınca indirme çalışacak. Ya da aşağıdan linki kopyalayıp tarayıcına yapıştır.
+  </div>
+
+  <a class="btn btn-primary" id="dlBtn"
+     href="https://github.com/bahadir-digital/yks-tercih-robotu/raw/main/yks-tercih-analizi.skill"
+     download="yks-tercih-analizi.skill">⬇ Skill dosyasını indir</a>
+  <a class="btn btn-ghost" href="#" id="copyBtn">İndirme linkini kopyala</a>
+  <p id="copied">Link kopyalandı ✓</p>
+  <a class="btn btn-ghost" href="https://github.com/bahadir-digital/yks-tercih-robotu">GitHub'da incele</a>
+
+  <div class="steps">
+    <h2>KURULUM</h2>
+    <ol>
+      <li>Yukarıdan <b>yks-tercih-analizi.skill</b> dosyasını indir</li>
+      <li>Claude.ai → Customize → Skills → Add → <b>Upload a Skill</b></li>
+      <li>Sonuç belgeni yükle, 5 soruya cevap ver. Listen hazır.</li>
+    </ol>
+  </div>
+
+  <div class="foot">
+    Takıldığın yerde: <a href="https://chat.whatsapp.com/I2763pKIpmS9xADAHLaGPE">Claude.ai Türkiye WhatsApp grubu</a><br><br>
+    <a href="https://bahadir.digital">bahadir.digital</a>
+  </div>
+
+<script>
+  var RAW = "https://github.com/bahadir-digital/yks-tercih-robotu/raw/main/yks-tercih-analizi.skill";
+  var ua = navigator.userAgent || "";
+  if (/Instagram|FBAN|FBAV/i.test(ua)) {
+    document.getElementById("igWarn").style.display = "block";
+  }
+  document.getElementById("copyBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    function done(){ document.getElementById("copied").style.display = "block"; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(RAW).then(done, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var t = document.createElement("textarea");
+      t.value = RAW; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); done(); } catch(err) {}
+      document.body.removeChild(t);
+    }
+  });
+</script>
+</body>
+</html>
